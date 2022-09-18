@@ -3,20 +3,22 @@ import { Label } from 'flowbite-react'
 import useFormLogin from './hooks/useFormLogin'
 
 function FormLogin() {
-  const { user } = useFormLogin()
+  const { user, handleSubmit, handleChange } = useFormLogin()
   return (
-    <form className="flex flex-col gap-4">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="email" value="Ingresa tu usuario" />
+          <Label htmlFor="username" value="Ingresa tu usuario" />
         </div>
         <TextInput
-          id="email"
-          type="email"
+          id="username"
+          name="username"
+          type="text"
           autoComplete="off"
           placeholder="name@flowbite.com"
           required={true}
           value={user.username}
+          onChange={handleChange}
         />
       </div>
       <div>
@@ -26,15 +28,17 @@ function FormLogin() {
         <TextInput
           id="password"
           placeholder="******"
+          name="password"
           type="password"
           required={true}
           value={user.password}
+          onChange={handleChange}
         />
       </div>
       <div>
         <button
-          type="button"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 block w-full"
+          type="submit"
+          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 block w-full"
         >
           Iniciar Sesión
         </button>
