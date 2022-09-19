@@ -1,5 +1,5 @@
+import { NavApp } from '@/components'
 import { Outlet } from 'react-router-dom'
-import { NavApp } from './components/NavApp'
 
 function Dashboard() {
   return (

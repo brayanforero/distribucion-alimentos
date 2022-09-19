@@ -1,5 +1,5 @@
+import { AppLink } from '@/components/shared/AppLink'
 import { Sidebar } from 'flowbite-react'
-import { AppLink } from '@/components'
 
 function NavApp() {
   return (
