@@ -7,7 +7,7 @@ function AppLink({ children, to }) {
       end
       className={({ isActive }) =>
         isActive
-          ? 'AppLink text-gray-100 bg-blue-400 pointer-events-none'
+          ? 'AppLink text-white bg-gradient-to-r from-red-600 to-red-500 pointer-events-none'
           : 'AppLink'
       }
     >

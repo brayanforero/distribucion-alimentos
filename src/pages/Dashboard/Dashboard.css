@@ -1,0 +1,8 @@
+.dashboard {
+  @apply w-full h-full bg-no-repeat bg-center bg-cover flex gap-5 py-4 px-2 bg-gray-800;
+}
+
+.dashboard-body {
+  @apply bg-white rounded;
+  width: calc(100% - 300px);
+}

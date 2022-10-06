@@ -1,11 +1,12 @@
 import { NavApp } from '@/components'
 import { Outlet } from 'react-router-dom'
 
+import './Dashboard.css'
 function Dashboard() {
   return (
-    <div className="w-full h-full grid grid-cols-4 overflow-hidden">
+    <div className="dashboard">
       <NavApp />
-      <div className="col-span-3 py-7 pr-5">
+      <div className="dashboard-body">
         <div className="shadow-lg h-full">
           <Outlet />
         </div>
