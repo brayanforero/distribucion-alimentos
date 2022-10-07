@@ -11,36 +11,42 @@ function NavApp() {
               <div className="flex items-center gap-2">
                 <i className="bx bx-rocket"></i>
                 Home
-                <i className="bx bx-chevron-right ml-auto text-xl"></i>
               </div>
-              <ul className="w-[90%] ml-auto border-l-2 border-white">
-                <li>
-                  <Link className="py-3 px-4 block w-full" to=".">
-                    Subitem1
-                  </Link>
-                </li>
-                <li>
-                  <Link className="py-3 px-4 block w-full" to=".">
-                    Subitem2
-                  </Link>
-                </li>
-                <li>
-                  <Link className="py-3 px-4 block w-full" to=".">
-                    Subitem3
-                  </Link>
-                </li>
-              </ul>
             </AppLink>
           </li>
           <li className="w-[85%] mx-auto">
             <AppLink to="comunity">
               <div className="flex items-center gap-4">
                 <i class="bx bx-group"></i>
-                Comunidad
-                <i className="bx bx-chevron-right ml-auto text-xl"></i>
+                <span className="whitespace-nowrap">Miembros</span>
               </div>
             </AppLink>
           </li>
+          <li className="w-[85%] mx-auto">
+            <AppLink to="comunity/add">
+              <div className="flex items-center gap-4">
+                <i class="bx bx-user-plus"></i>
+                <span className="whitespace-nowrap">Agregar Miembro</span>
+              </div>
+            </AppLink>
+          </li>
+          <li className="w-[85%] mx-auto">
+            <AppLink to="deliveries">
+              <div className="flex items-center gap-4">
+                <i class="bx bx-package"></i>
+                <span>Entregas</span>
+              </div>
+            </AppLink>
+          </li>
+          <li className="w-[85%] mx-auto">
+            <AppLink to="deliveires/add">
+              <div className="flex items-center gap-4">
+                <i class="bx bx-layer-plus"></i>
+                <span>Agrega Entrega</span>
+              </div>
+            </AppLink>
+          </li>
+
           <li className="w-[85%] mx-auto">
             <AppLink to="settings">
               <div className="flex items-center gap-4">
