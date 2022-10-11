@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import { MembersTable } from './components/MembersTable'
 import { TableSkeleton } from '@/components/layouts/TableSkeleton'
+import MembersTable from './components/MembersTable'
 const MembersList = () => {
   const [members, setMembers] = useState()
   const [loading, setLoading] = useState(false)

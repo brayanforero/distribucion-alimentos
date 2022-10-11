@@ -1,8 +1,8 @@
 import { Route } from 'react-router-dom'
 import { Routes } from 'react-router-dom'
-import { Dashboard, Login } from '@/pages'
-import { MembersList } from '@/components/auth/MembersList'
 import { routes } from '@/utils'
+import { Dashboard, Login } from '@/pages'
+import { MembersList } from '@/components'
 
 function AppRouter() {
   return (
