@@ -1,5 +1,5 @@
-import { CardForm } from './components/CardForm'
-import { FormLogin } from './components/FormLogin'
+import CardForm from './components/CardForm'
+import FormLogin from './components/FormLogin'
 import './Login.css'
 function Login() {
   return (

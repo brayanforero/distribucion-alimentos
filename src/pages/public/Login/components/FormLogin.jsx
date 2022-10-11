@@ -1,11 +1,9 @@
 import { TextInput } from 'flowbite-react'
 import { Label } from 'flowbite-react'
-import useFormLogin from './hooks/useFormLogin'
 
 function FormLogin() {
-  const { user, handleSubmit, handleChange } = useFormLogin()
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <form className="flex flex-col gap-4">
       <div>
         <div className="mb-2 block">
           <Label htmlFor="username" value="Ingresa tu usuario" />
@@ -16,9 +14,6 @@ function FormLogin() {
           type="text"
           autoComplete="off"
           placeholder="name@flowbite.com"
-          required={true}
-          value={user.username}
-          onChange={handleChange}
         />
       </div>
       <div>
@@ -30,9 +25,6 @@ function FormLogin() {
           placeholder="******"
           name="password"
           type="password"
-          required={true}
-          value={user.password}
-          onChange={handleChange}
         />
       </div>
       <div>

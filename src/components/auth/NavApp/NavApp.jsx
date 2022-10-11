@@ -1,6 +1,5 @@
 import { AppLink } from '@/components/shared/AppLink'
-import { Link } from 'react-router-dom'
-
+import { routes } from '@/utils'
 function NavApp() {
   return (
     <aside className="w-1/4 max-w-[300px]">
@@ -15,7 +14,7 @@ function NavApp() {
             </AppLink>
           </li>
           <li className="w-[85%] mx-auto">
-            <AppLink to="comunity">
+            <AppLink to={routes.members.index}>
               <div className="flex items-center gap-4">
                 <i className="bx bx-group"></i>
                 <span className="whitespace-nowrap">Miembros</span>
@@ -23,7 +22,7 @@ function NavApp() {
             </AppLink>
           </li>
           <li className="w-[85%] mx-auto">
-            <AppLink to="comunity/add">
+            <AppLink to={routes.members.add}>
               <div className="flex items-center gap-4">
                 <i className="bx bx-user-plus"></i>
                 <span className="whitespace-nowrap">Agregar Miembro</span>
