@@ -4,6 +4,7 @@ import axios from 'axios'
 import { TableSkeleton } from '@/components/layouts/TableSkeleton'
 import MembersTable from './components/MembersTable'
 import { getKeyFromStorage, STORAGE_KEYS } from '@/utils/storage'
+import { API_URL } from '@/utils'
 const MembersList = () => {
   const [members, setMembers] = useState()
   const [loading, setLoading] = useState(false)
@@ -13,7 +14,7 @@ const MembersList = () => {
     setLoading(true)
     const timer = setTimeout(() => {
       axios
-        .get('http://127.0.0.1:4000/v1/members', {
+        .get(`${API_URL}/members`, {
           signal: controller.signal,
           headers: {
             authorization: `Bearer ${

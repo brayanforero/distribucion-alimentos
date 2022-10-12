@@ -13,18 +13,18 @@ function useLogin() {
     setError('')
     setLoading(true)
     try {
-      const { data } = await axios.post(`${API_URL}/auth`, crendentials, {
-        timeout: 5000,
-      })
+      const { data } = await axios.post(`${API_URL}/auth`, crendentials, {})
 
       setStorage(STORAGE_KEYS.user, data?.user)
       setStorage(STORAGE_KEYS.token, data?.token)
       setLoading(false)
       authStore(data?.user)
-    } catch ({ response }) {
+    } catch ({ response, message }) {
       setLoading(false)
 
-      setError(response.data?.body ?? 'Error')
+      if (response) return setError(response.data.body)
+      if (message) return setError(message)
+      setError('Error')
     }
   }
 
