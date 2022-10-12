@@ -1,5 +1,6 @@
-export * from './auth/MembersList/components/MembersTable'
 export * from './auth/MembersList'
 export * from './auth/NavApp'
 export * from './layouts/TableSkeleton'
 export * from './shared/AppLink'
+export * from './shared/AuthRoute'
+export * from './shared/GuestRoute'

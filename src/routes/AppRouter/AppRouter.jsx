@@ -1,5 +1,4 @@
-import { Route } from 'react-router-dom'
-import { Routes } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { routes } from '@/utils'
 import { Dashboard, Login } from '@/pages'
 import { MembersList } from '@/components'
