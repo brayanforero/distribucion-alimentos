@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import AuthContext from './AuthContext'
+import useInitAuth from './useInitAuth'
 
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
+  useInitAuth(setUser)
 
   const login = user => {
     setUser(user)

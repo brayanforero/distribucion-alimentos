@@ -10,6 +10,9 @@ export const setStorage = (key, value) => {
 
 export const getKeyFromStorage = key => {
   const dataString = window.localStorage.getItem(key)
+
+  if (!dataString || typeof dataString === 'undefined') return null
+
   return JSON.parse(dataString)
 }
 
