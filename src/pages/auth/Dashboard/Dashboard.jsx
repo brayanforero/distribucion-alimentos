@@ -1,4 +1,4 @@
-import { AuthRoute, NavApp } from '@/components'
+import { AuthRoute, NavApp, StatusApp } from '@/components'
 import { Outlet } from 'react-router-dom'
 
 import './Dashboard.css'
@@ -8,6 +8,7 @@ function Dashboard() {
       <main className="dashboard">
         <NavApp />
         <section className="dashboard-body">
+          <StatusApp />
           <Outlet />
         </section>
       </main>

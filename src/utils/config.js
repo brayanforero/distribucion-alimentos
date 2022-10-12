@@ -1,1 +1,1 @@
-export const API_URL = 'http://127.0.0.1:4000/v1'
+export const API_URL = 'https://alimentos-back.onrender.com/v1'
