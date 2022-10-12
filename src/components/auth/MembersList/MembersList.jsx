@@ -3,6 +3,7 @@ import axios from 'axios'
 
 import { TableSkeleton } from '@/components/layouts/TableSkeleton'
 import MembersTable from './components/MembersTable'
+import { getKeyFromStorage, STORAGE_KEYS } from '@/utils/storage'
 const MembersList = () => {
   const [members, setMembers] = useState()
   const [loading, setLoading] = useState(false)
@@ -14,6 +15,11 @@ const MembersList = () => {
       axios
         .get('http://127.0.0.1:4000/v1/members', {
           signal: controller.signal,
+          headers: {
+            authorization: `Bearer ${
+              getKeyFromStorage(STORAGE_KEYS.token) ?? ''
+            }`,
+          },
         })
         .then(({ data }) => {
           const { values } = data.body
