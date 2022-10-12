@@ -2,22 +2,20 @@ import axios from 'axios'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { API_URL, routes } from '@/utils'
-import { useCookies } from 'react-cookie'
-
 import { useNavigate } from 'react-router-dom'
+import { setStorage, STORAGE_KEYS } from '@/utils/storage'
 function useLogin() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const navigate = useNavigate()
 
-  const [, setCookie] = useCookies('claptoken')
-
   const login = data => {
     setLoading(true)
     axios
       .post(`${API_URL}/auth`, data, { timeout: 5000 })
-      .then(res => {
-        setCookie('claptoken', res.data?.token)
+      .then(({ data }) => {
+        setStorage(STORAGE_KEYS.token, data?.token)
+        setStorage(STORAGE_KEYS.user, data?.user)
         navigate(routes.dashboard)
       })
       .catch(err => setError(err.response?.data.body ?? ''))

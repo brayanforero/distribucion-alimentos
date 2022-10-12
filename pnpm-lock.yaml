@@ -12,7 +12,6 @@ specifiers:
   flowbite-react: 0.1.11
   postcss: 8.4.17
   react: 18.2.0
-  react-cookie: 4.1.1
   react-dom: 18.2.0
   react-hook-form: 7.37.0
   react-router-dom: 6.4.2
@@ -27,7 +26,6 @@ dependencies:
   flowbite: 1.5.3
   flowbite-react: 0.1.11_dpyaei4r4vk3q7h3smrgyi6rla
   react: 18.2.0
-  react-cookie: 4.1.1_react@18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-hook-form: 7.37.0_react@18.2.0
   react-router-dom: 6.4.2_biqbaboplfbrettd7655fr4n2y
@@ -536,13 +534,6 @@ packages:
 
   /@types/cookie/0.3.3:
     resolution: {integrity: sha512-LKVP3cgXBT9RYj+t+9FDKwS5tdI+rPBXaNSkma7hvqy35lc7mAokC2zsqWJH0LaqIt3B962nuYI77hsJoT1gow==}
-    dev: false
-
-  /@types/hoist-non-react-statics/3.3.1:
-    resolution: {integrity: sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==}
-    dependencies:
-      '@types/react': 18.0.21
-      hoist-non-react-statics: 3.3.2
     dev: false
 
   /@types/lodash/4.14.186:
@@ -1519,12 +1510,6 @@ packages:
     dependencies:
       function-bind: 1.1.1
 
-  /hoist-non-react-statics/3.3.2:
-    resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
-    dependencies:
-      react-is: 16.13.1
-    dev: false
-
   /homedir-polyfill/1.0.3:
     resolution: {integrity: sha512-eSmmWE5bZTK2Nou4g0AI3zZ9rswp7GRKoKXS1BLUkvPviOqs4YTN1djQIqrXy9k5gEtdLPy86JjRwsNM9tnDcA==}
     engines: {node: '>=0.10.0'}
@@ -1978,17 +1963,6 @@ packages:
     resolution: {integrity: sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==}
     engines: {node: '>=10'}
 
-  /react-cookie/4.1.1_react@18.2.0:
-    resolution: {integrity: sha512-ffn7Y7G4bXiFbnE+dKhHhbP+b8I34mH9jqnm8Llhj89zF4nPxPutxHT1suUqMeCEhLDBI7InYwf1tpaSoK5w8A==}
-    peerDependencies:
-      react: '>= 16.3.0'
-    dependencies:
-      '@types/hoist-non-react-statics': 3.3.1
-      hoist-non-react-statics: 3.3.2
-      react: 18.2.0
-      universal-cookie: 4.0.4
-    dev: false
-
   /react-dom/18.2.0_react@18.2.0:
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
     peerDependencies:
@@ -2028,10 +2002,6 @@ packages:
       easy-bem: 1.1.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-    dev: false
-
-  /react-is/16.13.1:
-    resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: false
 
   /react-refresh/0.14.0:
@@ -2360,13 +2330,6 @@ packages:
     hasBin: true
     dev: false
     optional: true
-
-  /universal-cookie/4.0.4:
-    resolution: {integrity: sha512-lbRVHoOMtItjWbM7TwDLdl8wug7izB0tq3/YVKhT/ahB4VDvWMyvnADfnJI8y6fSvsjh51Ix7lTGC6Tn4rMPhw==}
-    dependencies:
-      '@types/cookie': 0.3.3
-      cookie: 0.4.2
-    dev: false
 
   /universalify/2.0.0:
     resolution: {integrity: sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==}
