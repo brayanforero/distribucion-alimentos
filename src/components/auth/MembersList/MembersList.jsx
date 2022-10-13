@@ -1,6 +1,6 @@
 import { TableSkeleton } from '@/components/layouts/TableSkeleton'
-import MembersTable from './components/MembersTable'
-import useMembersList from './components/useMembersList'
+import MembersTable from './MembersTable'
+import useMembersList from './useMembersList'
 
 const MembersList = () => {
   const { members, loading } = useMembersList()

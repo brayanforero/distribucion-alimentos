@@ -1,3 +1,4 @@
+export * from './auth/DeliveriesList'
 export * from './auth/MembersList'
 export * from './auth/NavApp'
 export * from './auth/StatusApp'

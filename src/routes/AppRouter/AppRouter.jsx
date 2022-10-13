@@ -1,8 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { routes } from '@/utils'
 import { Dashboard, Login } from '@/pages'
-import { MembersList } from '@/components'
-import { DeliveriesList } from '@/components/auth/DeliveriesList'
+import { DeliveriesList, MembersList } from '@/components'
 
 function AppRouter() {
   return (
