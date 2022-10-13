@@ -5,6 +5,7 @@ const routes = {
     index: 'members',
     add: 'members/add',
   },
+  deliveries: 'deliveries',
   settings: 'settings',
 }
 
