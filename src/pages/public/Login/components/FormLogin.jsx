@@ -6,6 +6,7 @@ import { userSchema } from '@/utils'
 import useLogin from '../hooks/useLogin'
 import { Spinner } from 'flowbite-react'
 import { Toast } from 'flowbite-react'
+import { ToastContainer } from 'react-toastify'
 function FormLogin() {
   const {
     register,
@@ -15,7 +16,7 @@ function FormLogin() {
     resolver: yupResolver(userSchema),
   })
 
-  const { submitUser, loading, error } = useLogin()
+  const { submitUser, loading } = useLogin()
 
   return (
     <form onSubmit={handleSubmit(submitUser)} className="flex flex-col gap-4">
@@ -69,12 +70,7 @@ function FormLogin() {
             <Spinner aria-label="Default status example" />
           )}
         </button>
-        {error && (
-          <Toast>
-            <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-red-500"></div>
-            <div className="ml-3 text-sm font-normal text-red-500">{error}</div>
-          </Toast>
-        )}
+        <ToastContainer />
       </div>
     </form>
   )

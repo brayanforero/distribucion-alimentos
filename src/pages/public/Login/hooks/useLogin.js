@@ -3,14 +3,13 @@ import useAuth from '@/hooks/useAuth'
 import axios from 'axios'
 import { setStorage, STORAGE_KEYS } from '@/utils/storage'
 import { API_URL } from '@/utils'
+import { toast } from 'react-toastify'
 
 function useLogin() {
   const { login: authStore } = useAuth()
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
 
   const login = async crendentials => {
-    setError('')
     setLoading(true)
     try {
       const { data } = await axios.post(`${API_URL}/auth`, crendentials, {})
@@ -21,10 +20,33 @@ function useLogin() {
       authStore(data?.user)
     } catch ({ response, message }) {
       setLoading(false)
+      let messageToast = 'Falied login'
+      if (response) {
+        messageToast = response.data.body
+        toast(messageToast, {
+          autoClose: true,
+          type: 'error',
+          position: 'bottom-right',
+        })
 
-      if (response) return setError(response.data.body)
-      if (message) return setError(message)
-      setError('Error')
+        return
+      }
+      if (message) {
+        messageToast = message
+        toast(messageToast, {
+          autoClose: true,
+          type: 'error',
+          position: 'bottom-right',
+        })
+
+        return
+      }
+
+      toast(messageToast, {
+        autoClose: true,
+        type: 'error',
+        position: 'bottom-right',
+      })
     }
   }
 
@@ -35,7 +57,6 @@ function useLogin() {
   return {
     submitUser,
     loading,
-    error,
   }
 }
 

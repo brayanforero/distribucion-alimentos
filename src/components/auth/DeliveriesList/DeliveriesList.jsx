@@ -1,4 +1,5 @@
 import { TableSkeleton } from '@/components/layouts/TableSkeleton'
+import { ToastContainer } from 'react-toastify'
 import DeliveriesTable from './DeliveriesTable'
 import useDeliveries from './useDeliveries'
 
@@ -12,6 +13,7 @@ const DeliveriesList = () => {
 
       {loading && <TableSkeleton />}
       <DeliveriesTable isLoadData={loading} data={deliveries} />
+      <ToastContainer />
     </section>
   )
 }

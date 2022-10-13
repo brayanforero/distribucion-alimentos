@@ -1,4 +1,5 @@
 import { TableSkeleton } from '@/components/layouts/TableSkeleton'
+import { ToastContainer } from 'react-toastify'
 import MembersTable from './MembersTable'
 import useMembersList from './useMembersList'
 
@@ -11,6 +12,7 @@ const MembersList = () => {
       </h1>
       {loading && <TableSkeleton />}
       <MembersTable isLoadData={loading} data={members} />
+      <ToastContainer />
     </section>
   )
 }

@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import React from 'react'
 function DeliveriesTable({ data = [], isLoadData = false }) {
   return (
@@ -34,10 +35,12 @@ function DeliveriesTable({ data = [], isLoadData = false }) {
                 scope="row"
                 className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap"
               >
-                {i.code}
+                {i.code.substring(0, 8)}
               </th>
 
-              <td className="py-4 px-6">{i.created_at}</td>
+              <td className="py-4 px-6">
+                {dayjs(i.created_at).format('DD/MM/YYYY HH:mm a')}
+              </td>
               <td className="py-4 px-6">{i.peoples}</td>
               <td className="py-4 px-6">{i.unities}</td>
               <td

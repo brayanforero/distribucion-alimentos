@@ -3,39 +3,46 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { getKeyFromStorage, STORAGE_KEYS } from '@/utils/storage'
 import { API_URL } from '@/utils'
+import dayjs from 'dayjs'
+import { toast } from 'react-toastify'
 
 function useDeliveries() {
   const [deliveries, setDeliveries] = useState([])
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    const controller = new AbortController()
     setLoading(true)
-    const timer = setTimeout(() => {
-      axios
-        .get(`${API_URL}/deliveries`, {
-          signal: controller.signal,
-          headers: {
-            authorization: `Bearer ${
-              getKeyFromStorage(STORAGE_KEYS.token) ?? ''
-            }`,
-          },
+    axios
+      .get(`${API_URL}/deliveries`, {
+        headers: {
+          authorization: `Bearer ${
+            getKeyFromStorage(STORAGE_KEYS.token) ?? ''
+          }`,
+        },
+      })
+      .then(({ data }) => {
+        const { values } = data.body
+
+        values.sort((a, b) => {
+          return (
+            dayjs(b.created_at).format('YYMMDD') -
+            dayjs(a.created_at).format('YYMMDD')
+          )
         })
-        .then(({ data }) => {
-          const { values } = data.body
-          setDeliveries(values)
+
+        setDeliveries(values)
+      })
+      .catch(err => {
+        const message = err?.message ?? 'Falied get data'
+        toast(message, {
+          autoClose: true,
+          type: 'error',
+          position: 'bottom-right',
         })
-        .catch(err => {
-          console.log(err)
-        })
-        .finally(() => {
-          setLoading(false)
-        })
-    }, 2000)
-    return () => {
-      controller.abort()
-      clearTimeout(timer)
-    }
+      })
+      .finally(() => {
+        setLoading(false)
+      })
   }, [])
   return {
     deliveries,
