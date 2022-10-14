@@ -17,8 +17,14 @@ export const memberSchema = yup
     phone_number: yup
       .string()
       .matches(regexPhone, 'Phone is not a Venezuelan valid number'),
-    address: yup.string(),
-    member_of_family: yup.number().min(0).max(10).required(),
+    address: yup.string().max(20),
+    member_of_family: yup
+      .number()
+      .required()
+      .positive()
+      .integer()
+      .min(0, 'This field must be mix 0 and max 10')
+      .max(10, 'This field must be mix 0 and max 10'),
     is_worker: yup.bool().required(),
   })
   .required()

@@ -1,16 +1,19 @@
 import { memberSchema } from '@/utils'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { Spinner } from 'flowbite-react'
 import { Label, TextInput } from 'flowbite-react'
 import { useForm } from 'react-hook-form'
+import { ToastContainer } from 'react-toastify'
 import useFormMember from './useFormMember'
 
 function FormMembers() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({ resolver: yupResolver(memberSchema) })
-  const { submiter } = useFormMember()
+  const { submiter, loading } = useFormMember(reset)
   return (
     <form
       onSubmit={handleSubmit(submiter)}
@@ -129,7 +132,7 @@ function FormMembers() {
           color="red"
           helperText={
             <span className="text-sm text-red-500">
-              {errors.members_of_family?.message}
+              {errors.member_of_family?.message}
             </span>
           }
           {...register('member_of_family')}
@@ -144,7 +147,7 @@ function FormMembers() {
           id="is_worker"
           type="checkbox"
           value=""
-          class="w-6 h-6 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+          className="w-6 h-6 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
           {...register('is_worker')}
         />
       </div>
@@ -154,8 +157,9 @@ function FormMembers() {
           type="submit"
           className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 block w-full"
         >
-          Agregar
+          {!loading ? 'Agregar' : <Spinner />}
         </button>
+        <ToastContainer />
       </div>
     </form>
   )

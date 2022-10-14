@@ -1,10 +1,11 @@
 import axios from 'axios'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { getKeyFromStorage, STORAGE_KEYS } from '@/utils/storage'
-import { API_URL } from '@/utils'
+import { cleanStorage, getKeyFromStorage, STORAGE_KEYS } from '@/utils/storage'
+import { API_URL, routes } from '@/utils'
 import dayjs from 'dayjs'
 import { toast } from 'react-toastify'
+import { redirect } from 'react-router-dom'
 
 function useDeliveries() {
   const [deliveries, setDeliveries] = useState([])
@@ -33,13 +34,20 @@ function useDeliveries() {
         setDeliveries(values)
       })
       .catch(err => {
+        const error401 = err?.response?.data?.body
         const message = err?.message ?? 'Falied get data'
-        toast(message, {
+        toast(error401 || message, {
           autoClose: true,
           type: 'error',
           position: 'bottom-right',
         })
+
+        if (error401) {
+          cleanStorage()
+          redirect(routes.home)
+        }
       })
+
       .finally(() => {
         setLoading(false)
       })
