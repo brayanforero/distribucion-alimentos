@@ -1,8 +1,16 @@
+import { lazy } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { routes } from '@/utils'
-import { Dashboard, Login } from '@/pages'
-import { AddMembers, DeliveriesList, MembersList } from '@/components'
 
+const Login = lazy(() => import('@/pages/public/Login/Login'))
+const Dashboard = lazy(() => import('@/pages/auth/Dashboard/Dashboard'))
+const MembersList = lazy(() =>
+  import('@/components/auth/MembersList/MembersList')
+)
+const AddMembers = lazy(() => import('@/components/auth/AddMembers/AddMembers'))
+const DeliveriesList = lazy(() =>
+  import('@/components/auth/DeliveriesList/DeliveriesList')
+)
 function AppRouter() {
   return (
     <>
