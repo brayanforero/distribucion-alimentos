@@ -3,6 +3,6 @@
 }
 
 .dashboard-body {
-  @apply bg-white rounded shadow-lg h-full;
+  @apply bg-white rounded shadow-lg h-full overflow-y-scroll;
   width: calc(100% - 300px);
 }
