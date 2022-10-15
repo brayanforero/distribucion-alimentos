@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 import { useCallback } from 'react'
 import { ToastContainer } from 'react-toastify'
-import { toast } from 'react-toastify'
+
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
@@ -16,7 +16,6 @@ function DeliveriesTable({ data = [], isLoadData = false, onClose }) {
       cancelButtonColor: '#E02424',
     }).then(({ isConfirmed }) => {
       if (!isConfirmed) return
-
       onClose(i.id)
     })
   }, [])
