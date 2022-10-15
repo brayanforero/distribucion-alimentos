@@ -18,7 +18,7 @@ export const memberSchema = yup
       .string()
       .matches(regexPhone, 'Phone is not a Venezuelan valid number'),
     address: yup.string().max(20),
-    member_of_family: yup
+    members_of_family: yup
       .number()
       .required()
       .positive()

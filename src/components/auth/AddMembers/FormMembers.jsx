@@ -132,10 +132,10 @@ function FormMembers() {
           color="red"
           helperText={
             <span className="text-sm text-red-500">
-              {errors.member_of_family?.message}
+              {errors.members_of_family?.message}
             </span>
           }
-          {...register('member_of_family')}
+          {...register('members_of_family')}
         />
       </div>
 
