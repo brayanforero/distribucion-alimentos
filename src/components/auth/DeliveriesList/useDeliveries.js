@@ -69,6 +69,39 @@ function useDeliveries() {
       })
       .then(_res => {
         fetchDeliveries()
+        toast('Delivery closed', {
+          type: 'success',
+          position: 'bottom-right',
+        })
+      })
+      .catch(err => {
+        const error400 = err?.response?.data.body
+        const axiosMessage = err?.message || 'Error sending information'
+
+        toast(error400 || axiosMessage, {
+          type: 'error',
+          position: 'bottom-right',
+        })
+      })
+      .finally(() => setLoading(false))
+  }
+
+  const addDelivery = () => {
+    setLoading(true)
+    axios
+      .post(`${API_URL}/deliveries/`, null, {
+        headers: {
+          authorization: `Bearer ${
+            getKeyFromStorage(STORAGE_KEYS.token) ?? ''
+          }`,
+        },
+      })
+      .then(_res => {
+        toast('Delivery added', {
+          type: 'success',
+          position: 'bottom-right',
+        })
+        fetchDeliveries()
       })
       .catch(err => {
         const error400 = err?.response?.data.body
@@ -85,6 +118,7 @@ function useDeliveries() {
   return {
     deliveries,
     closeDelivery,
+    addDelivery,
     loading,
   }
 }
