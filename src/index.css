@@ -75,3 +75,7 @@ button:focus-visible {
 body {
   @apply h-screen overflow-hidden bg-gray-50;
 }
+
+body.swal2-height-auto {
+  height: 100vh !important;
+}

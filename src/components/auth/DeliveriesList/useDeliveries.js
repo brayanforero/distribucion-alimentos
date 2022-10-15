@@ -12,6 +12,10 @@ function useDeliveries() {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    fetchDeliveries()
+  }, [])
+
+  const fetchDeliveries = () => {
     setLoading(true)
     axios
       .get(`${API_URL}/deliveries`, {
@@ -51,9 +55,36 @@ function useDeliveries() {
       .finally(() => {
         setLoading(false)
       })
-  }, [])
+  }
+
+  const closeDelivery = id => {
+    setLoading(true)
+    axios
+      .put(`${API_URL}/deliveries/${id}`, null, {
+        headers: {
+          authorization: `Bearer ${
+            getKeyFromStorage(STORAGE_KEYS.token) ?? ''
+          }`,
+        },
+      })
+      .then(_res => {
+        fetchDeliveries()
+      })
+      .catch(err => {
+        const error400 = err?.response?.data.body
+        const axiosMessage = err?.message || 'Error sending information'
+
+        toast(error400 || axiosMessage, {
+          type: 'error',
+          position: 'bottom-right',
+        })
+      })
+      .finally(() => setLoading(false))
+  }
+
   return {
     deliveries,
+    closeDelivery,
     loading,
   }
 }
