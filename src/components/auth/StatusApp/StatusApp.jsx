@@ -1,16 +1,19 @@
 import useAuth from '@/hooks/useAuth'
+import dayjs from 'dayjs'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 
 const StatusApp = () => {
   const { user, logout } = useAuth()
-  const [date, setDate] = useState(new Date().toLocaleString())
+  const [date, setDate] = useState(
+    dayjs(new Date()).format('DD/MM/YYYY HH:mm a')
+  )
 
   useEffect(() => {
     const timerDate = setInterval(() => {
-      setDate(new Date().toLocaleString())
-    }, 1000)
+      setDate(dayjs(new Date()).format('DD/MM/YYYY HH:mm a'))
+    }, 1000 * 60)
 
     return () => {
       clearInterval(timerDate)
