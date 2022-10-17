@@ -38,10 +38,10 @@ function NavApp() {
             </AppLink>
           </li>
           <li className="w-[85%] mx-auto">
-            <AppLink to="deliveires/add">
+            <AppLink to={routes.payments}>
               <div className="flex items-center gap-4">
-                <i className="bx bx-layer-plus"></i>
-                <span>Agrega Entrega</span>
+                <i className="bx bx-wallet"></i>
+                <span>Pagos</span>
               </div>
             </AppLink>
           </li>

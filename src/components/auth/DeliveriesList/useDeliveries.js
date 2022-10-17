@@ -1,7 +1,12 @@
 import axios from 'axios'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { cleanStorage, getKeyFromStorage, STORAGE_KEYS } from '@/utils/storage'
+import {
+  cleanStorage,
+  getKeyFromStorage,
+  setStorage,
+  STORAGE_KEYS,
+} from '@/utils/storage'
 import { API_URL, routes } from '@/utils'
 import dayjs from 'dayjs'
 import { toast } from 'react-toastify'
@@ -35,6 +40,10 @@ function useDeliveries() {
           )
         })
 
+        setStorage(
+          STORAGE_KEYS.currentDelivery,
+          values.find(i => i.state === true)
+        )
         setDeliveries(values)
       })
       .catch(err => {
@@ -68,11 +77,12 @@ function useDeliveries() {
         },
       })
       .then(_res => {
-        fetchDeliveries()
         toast('Delivery closed', {
           type: 'success',
           position: 'bottom-right',
         })
+
+        fetchDeliveries()
       })
       .catch(err => {
         const error400 = err?.response?.data.body

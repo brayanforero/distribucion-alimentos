@@ -6,6 +6,7 @@ const routes = {
     add: 'members/add',
   },
   deliveries: 'deliveries',
+  payments: 'payments',
   settings: 'settings',
 }
 

@@ -1,6 +1,7 @@
 export const STORAGE_KEYS = {
   token: 'token',
   user: 'user',
+  currentDelivery: 'currentDelivery',
 }
 
 export const setStorage = (key, value) => {

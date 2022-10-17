@@ -11,6 +11,8 @@ const AddMembers = lazy(() => import('@/components/auth/AddMembers/AddMembers'))
 const DeliveriesList = lazy(() =>
   import('@/components/auth/DeliveriesList/DeliveriesList')
 )
+
+const Payments = lazy(() => import('@/components/auth/Payments/Payments'))
 function AppRouter() {
   return (
     <>
@@ -21,6 +23,7 @@ function AppRouter() {
           <Route path={routes.members.index} element={<MembersList />} />
           <Route path={routes.members.add} element={<AddMembers />} />
           <Route path={routes.deliveries} element={<DeliveriesList />} />
+          <Route path={routes.payments} element={<Payments />} />
           <Route path={routes.settings} element={<h1>Config</h1>} />
         </Route>
         <Route path="*" element={<h1>404</h1>} />
