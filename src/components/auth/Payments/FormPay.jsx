@@ -1,29 +1,36 @@
 import { Label } from 'flowbite-react'
 import { TextInput } from 'flowbite-react'
-import { Spinner } from 'flowbite-react'
-import React from 'react'
 import { useForm } from 'react-hook-form'
 import { ToastContainer } from 'react-toastify'
 import BoxSearch from './BoxSearch'
 import usePayments from './usePayments'
 
 function FormPay() {
-  const { delivery } = usePayments()
+  const { delivery, member, setMember, sendPay } = usePayments()
+
   const {
     register,
     handleSubmit,
-
     formState: { errors },
   } = useForm()
 
   return (
     <>
-      <BoxSearch />
+      <BoxSearch onSelect={setMember} />
       <form
-        onSubmit={handleSubmit(() => {})}
+        onSubmit={handleSubmit(sendPay)}
         className="grid grid-cols-4 gap-4 shadow-md rounded-lg p-4"
       >
-        <div className="col-span-2">
+        <input
+          type="hidden"
+          {...register('delivery_id', { value: delivery?.id })}
+        />
+        <input
+          type="hidden"
+          {...register('member_id', { value: member?.id })}
+        />
+        <input type="hidden" {...register('is_paid', { value: true })} />
+        <div className="col-span-4">
           <div className="mb-2 block">
             <Label value="Código de Entrega" />
           </div>
@@ -36,7 +43,7 @@ function FormPay() {
             placeholder={delivery?.code || 'xxxxxx'}
           />
         </div>
-        <div className="col-span-2">
+        <div className="col-span-4">
           <div className="mb-2 block">
             <Label htmlFor="member" value="Miembro" />
           </div>
@@ -47,8 +54,11 @@ function FormPay() {
             sizing="sm"
             color="red"
             disabled
-            placeholder="xxxxxx"
-            {...register('member')}
+            placeholder={
+              member
+                ? `${member.cedula} - ${member.names} ${member.lastnames}`
+                : 'xxxxxx'
+            }
           />
         </div>
         <div className="col-span-2">
@@ -63,22 +73,38 @@ function FormPay() {
             sizing="sm"
             color="red"
             placeholder="0.0"
-            {...register('mount')}
+            {...register('mount', {
+              required: true,
+              min: { value: 0.25, message: 'Should be min 0.25' },
+              valueAsNumber: true,
+            })}
+            helperText={
+              <span className="text-sm text-red-500">
+                {errors.mount?.message}
+              </span>
+            }
           />
         </div>
 
         <div className="col-span-2">
           <div className="mb-2 block">
-            <Label htmlFor="mount" value="Modena" />
+            <Label htmlFor="mount" value="Moneda" />
           </div>
           <select
             id="mount"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
+            {...register('currency', {
+              required: { value: true, message: 'You must chose an option' },
+            })}
+            defaultValue={0}
           >
             <option selected>Seleccione una Moneda</option>
             <option value="VEZ">VEZ</option>
             <option value="COP">COP</option>
           </select>
+          <span className="text-sm text-red-500">
+            {errors.currency?.message}
+          </span>
         </div>
 
         <div>

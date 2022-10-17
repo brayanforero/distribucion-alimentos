@@ -11,6 +11,7 @@ specifiers:
   dayjs: 1.11.5
   flowbite: 1.5.3
   flowbite-react: 0.2.0
+  just-debounce-it: 3.1.1
   postcss: 8.4.18
   react: 18.2.0
   react-dom: 18.2.0
@@ -30,6 +31,7 @@ dependencies:
   dayjs: 1.11.5
   flowbite: 1.5.3
   flowbite-react: 0.2.0_dpyaei4r4vk3q7h3smrgyi6rla
+  just-debounce-it: 3.1.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-hook-form: 7.37.0_react@18.2.0
@@ -1677,6 +1679,10 @@ packages:
       universalify: 2.0.0
     optionalDependencies:
       graceful-fs: 4.2.10
+    dev: false
+
+  /just-debounce-it/3.1.1:
+    resolution: {integrity: sha512-oPsuRyWp99LJaQ4KXC3A42tQNqkRTcPy0A8BCkRZ5cPCgsx81upB2KUrmHZvDUNhnCDKe7MshfTuWFQB9iXwDg==}
     dev: false
 
   /lilconfig/2.0.6:

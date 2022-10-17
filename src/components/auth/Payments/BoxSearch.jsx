@@ -1,11 +1,27 @@
-import { Button } from 'flowbite-react'
 import { Label } from 'flowbite-react'
 import { TextInput } from 'flowbite-react'
-import { useState } from 'react'
-import BoxResult from './BoxResult'
+import { useRef } from 'react'
 
-function BoxSearch() {
-  const data = useState([])
+import BoxResult from './BoxResult'
+import useBoxSearch from './useBoxSearch'
+
+function BoxSearch({ onSelect }) {
+  const inputRef = useRef()
+  const { result, searchMember, setResult } = useBoxSearch()
+  const handleSearch = ({ target }) => {
+    if (target.value === '') return setResult([])
+    searchMember(target.value)
+  }
+
+  const handleSelect = m => {
+    onSelect(m)
+    setResult([])
+
+    if (inputRef) {
+      inputRef.current.value = ''
+    }
+  }
+
   return (
     <section className=" shadow-md rounded-lg p-4 mb-4 ">
       <form className="flex items-center  gap-2">
@@ -15,11 +31,15 @@ function BoxSearch() {
           </Label>
         </div>
         <div className="flex-1 relative">
-          <TextInput id="search" placeholder="Ingresa el numero de cédula" />
-          <BoxResult />
-        </div>
-        <div>
-          <Button type="submit">Buscar</Button>
+          <TextInput
+            ref={inputRef}
+            autoComplete="off"
+            onChange={handleSearch}
+            name="cedula"
+            id="search"
+            placeholder="Ingresa el numero de cédula"
+          />
+          <BoxResult onSelectItem={handleSelect} items={result} />
         </div>
       </form>
     </section>

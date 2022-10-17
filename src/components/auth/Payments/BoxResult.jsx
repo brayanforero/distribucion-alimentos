@@ -1,4 +1,4 @@
-function BoxResult({ items = [] }) {
+function BoxResult({ items = [], onSelectItem }) {
   const hasItems = items.length > 0 ? true : false
   return (
     <div
@@ -10,6 +10,7 @@ function BoxResult({ items = [] }) {
     >
       {items.map(i => (
         <span
+          onClick={() => onSelectItem(i)}
           key={i.cedula}
           className="block w-full p-4 hover:bg-gray-100 cursor-pointer rounded-lg"
         >
