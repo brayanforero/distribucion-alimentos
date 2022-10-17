@@ -1,1 +1,2 @@
-export const API_URL = 'https://alimentos-back.onrender.com/v1'
+export const API_URL =
+  import.meta.env.VITE_API_URL || 'http://localhost:4000/v1'
