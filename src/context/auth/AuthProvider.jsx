@@ -1,4 +1,4 @@
-import { removeKeyStorage, STORAGE_KEYS } from '@/utils/storage'
+import { cleanStorage } from '@/utils/storage'
 import { useState } from 'react'
 import AuthContext from './AuthContext'
 import useInitAuth from './useInitAuth'
@@ -12,8 +12,7 @@ function AuthProvider({ children }) {
   }
 
   const logout = () => {
-    removeKeyStorage(STORAGE_KEYS.user)
-    removeKeyStorage(STORAGE_KEYS.token)
+    cleanStorage()
     setUser(null)
   }
 

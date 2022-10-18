@@ -27,6 +27,17 @@ function useBoxSearch() {
       )
 
       toast.dismiss(toastID)
+
+      if (res?.body.length === 0) {
+        toast('Data not found', {
+          autoClose: true,
+          type: 'error',
+          position: 'bottom-right',
+        })
+
+        return
+      }
+
       setResult(res.body)
     } catch (err) {
       const error401 = err?.response?.data?.body

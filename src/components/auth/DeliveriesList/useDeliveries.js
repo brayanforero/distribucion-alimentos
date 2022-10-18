@@ -130,6 +130,7 @@ function useDeliveries() {
     closeDelivery,
     addDelivery,
     loading,
+    fetchDeliveries,
   }
 }
 

@@ -1,5 +1,6 @@
 export * from './auth/AddMembers'
 export * from './auth/DeliveriesList'
+export * from './auth/InitData'
 export * from './auth/MembersList'
 export * from './auth/NavApp'
 export * from './auth/Payments'
