@@ -42,7 +42,7 @@ function useDeliveries() {
 
         setStorage(
           STORAGE_KEYS.currentDelivery,
-          values.find(i => i.state === true)
+          values.find(i => i.state === true) || 0
         )
         setDeliveries(values)
       })

@@ -9,11 +9,9 @@ function usePayments() {
   const [currentDelivery, setCurrentDelivery] = useState(null)
   const [member, setMember] = useState(null)
   useEffect(() => {
-    const delivery = getKeyFromStorage(STORAGE_KEYS.currentDelivery) || null
-
-    if (!delivery) return
-
-    setCurrentDelivery(delivery)
+    const currentDelivery = getKeyFromStorage(STORAGE_KEYS.currentDelivery)
+    if (!currentDelivery) return
+    setCurrentDelivery(currentDelivery)
   }, [])
 
   const sendPay = async (data, e) => {
