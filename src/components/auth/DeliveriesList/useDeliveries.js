@@ -35,8 +35,8 @@ function useDeliveries() {
 
         values.sort((a, b) => {
           return (
-            dayjs(b.created_at).format('YYMMDD') -
-            dayjs(a.created_at).format('YYMMDD')
+            dayjs(b.created_at).format('YYMMDDHmmss') -
+            dayjs(a.created_at).format('YYMMDDHmmss')
           )
         })
 

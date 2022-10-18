@@ -27,6 +27,7 @@ function usePayments() {
           type: 'success',
           autoClose: true,
         })
+        e.target.reset()
         setMember(null)
       })
       .catch(err => {
