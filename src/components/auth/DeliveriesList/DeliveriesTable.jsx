@@ -84,14 +84,14 @@ function DeliveriesTable({ data = [], isLoadData = false, onClose }) {
                     <>
                       <button
                         type="button"
-                        className="text-white bg-gradient-to-r from-green-500 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm  p-2 text-center mr-2 mb-2"
+                        className="text-white bg-gradient-to-r from-green-600 to-green-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm  p-2 text-center mr-2 mb-2"
                         onClick={() => setCurrentSelectItem(i)}
                       >
                         Pagos
                       </button>
                       <button
                         type="button"
-                        className="text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm  p-2 text-center mr-2 mb-2"
+                        className="text-white bg-gradient-to-r from-yellow-600 to-yellow-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm  p-2 text-center mr-2 mb-2"
                         onClick={() => handlerSelected(i)}
                       >
                         Cerrar

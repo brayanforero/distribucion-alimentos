@@ -21,7 +21,7 @@ const StatusApp = () => {
   }, [])
 
   return (
-    <section className="p-4 flex flex-col gap-2">
+    <section className="p-4 flex flex-col max-h-[20%] gap-2">
       <div className="ml-auto w-2/5 flex justify-end gap-2 text-gray-800 text-sm">
         <p className="font-semibold">Fecha: </p>
         <p className="font-normal">{date}</p>

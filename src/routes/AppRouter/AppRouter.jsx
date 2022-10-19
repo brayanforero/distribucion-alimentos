@@ -1,6 +1,7 @@
 import { lazy } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { routes } from '@/utils'
+import { Home } from '@/components'
 
 const Login = lazy(() => import('@/pages/public/Login/Login'))
 const Dashboard = lazy(() => import('@/pages/auth/Dashboard/Dashboard'))
@@ -19,7 +20,7 @@ function AppRouter() {
       <Routes>
         <Route path={routes.home} element={<Login />} />
         <Route path={routes.dashboard} element={<Dashboard />}>
-          <Route index element={<h1>Index</h1>} />
+          <Route index element={<Home />} />
           <Route path={routes.members.index} element={<MembersList />} />
           <Route path={routes.members.add} element={<AddMembers />} />
           <Route path={routes.deliveries} element={<DeliveriesList />} />
