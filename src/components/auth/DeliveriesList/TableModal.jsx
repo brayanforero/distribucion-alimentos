@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import { Modal } from 'flowbite-react'
 
 function TableModal({ item, onHidde }) {
@@ -50,7 +51,7 @@ function TableModal({ item, onHidde }) {
                   scope="row"
                   className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap"
                 >
-                  asdfasdfasdf
+                  {dayjs(i.created_at).format('DD/MM/YYYY')}
                 </th>
 
                 <td className="py-4 px-6">{i.cedula}</td>
