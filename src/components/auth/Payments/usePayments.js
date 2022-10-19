@@ -25,8 +25,6 @@ function usePayments() {
           type: 'success',
           autoClose: true,
         })
-        e.target.reset()
-        setMember(null)
       })
       .catch(err => {
         const error401 = err?.response?.data?.body
@@ -39,6 +37,8 @@ function usePayments() {
       })
       .finally(() => {
         setLoading(false)
+        e.target.reset()
+        setMember(null)
       })
   }
 

@@ -30,7 +30,7 @@ function useBoxSearch() {
 
       if (res?.body.length === 0) {
         toast('Data not found', {
-          autoClose: true,
+          autoClose: 600,
           type: 'error',
           position: 'bottom-right',
         })
@@ -43,7 +43,6 @@ function useBoxSearch() {
       const error401 = err?.response?.data?.body
       const message = err?.message ?? 'Falied get data'
       toast(error401 || message, {
-        autoClose: true,
         type: 'error',
         position: 'bottom-right',
       })
@@ -53,7 +52,7 @@ function useBoxSearch() {
         redirect(routes.home)
       }
     }
-  }, 600)
+  }, 800)
 
   return {
     result,

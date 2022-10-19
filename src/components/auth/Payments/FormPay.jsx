@@ -101,6 +101,7 @@ function FormPay() {
               </div>
               <select
                 id="mount"
+                defaultValue={'VEZ'}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
                 {...register('currency', {
                   required: {
@@ -109,9 +110,7 @@ function FormPay() {
                   },
                 })}
               >
-                <option selected value="VEZ">
-                  VEZ
-                </option>
+                <option value="VEZ">VEZ</option>
                 <option value="COP">COP</option>
               </select>
               <span className="text-sm text-red-500">
