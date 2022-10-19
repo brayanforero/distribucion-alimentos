@@ -1,6 +1,7 @@
 import { Modal } from 'flowbite-react'
 
 function TableModal({ item, onHidde }) {
+  item.payers.sort((a, b) => a.cedula - b.cedula)
   return (
     <Modal
       show={true}
