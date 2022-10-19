@@ -1,12 +1,15 @@
 import dayjs from 'dayjs'
+import { useState } from 'react'
 import { useCallback } from 'react'
 import { ToastContainer } from 'react-toastify'
 
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import TableModal from './TableModal'
 
 const MySwal = withReactContent(Swal)
 function DeliveriesTable({ data = [], isLoadData = false, onClose }) {
+  const [currentSelectItem, setCurrentSelectItem] = useState(null)
   const handlerSelected = useCallback(i => {
     MySwal.fire({
       icon: 'warning',
@@ -78,13 +81,22 @@ function DeliveriesTable({ data = [], isLoadData = false, onClose }) {
                 </td>
                 <td className="py-4 px-6 font-semibold">
                   {i.state && (
-                    <button
-                      type="button"
-                      className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2"
-                      onClick={() => handlerSelected(i)}
-                    >
-                      Cerrar
-                    </button>
+                    <>
+                      <button
+                        type="button"
+                        className="text-white bg-gradient-to-r from-green-500 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm  p-2 text-center mr-2 mb-2"
+                        onClick={() => setCurrentSelectItem(i)}
+                      >
+                        Pagos
+                      </button>
+                      <button
+                        type="button"
+                        className="text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm  p-2 text-center mr-2 mb-2"
+                        onClick={() => handlerSelected(i)}
+                      >
+                        Cerrar
+                      </button>
+                    </>
                   )}
                 </td>
               </tr>
@@ -101,6 +113,9 @@ function DeliveriesTable({ data = [], isLoadData = false, onClose }) {
           </tbody>
         </table>
       </div>
+      {currentSelectItem && (
+        <TableModal item={currentSelectItem} onHidde={setCurrentSelectItem} />
+      )}
       <ToastContainer />
     </>
   )
