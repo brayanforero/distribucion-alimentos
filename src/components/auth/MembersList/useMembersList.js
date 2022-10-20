@@ -8,8 +8,11 @@ import { toast } from 'react-toastify'
 function useMembersList() {
   const [members, setMembers] = useState([])
   const [loading, setLoading] = useState(false)
-
   useEffect(() => {
+    fetchMembers()
+  }, [])
+
+  const fetchMembers = () => {
     setLoading(true)
 
     axios
@@ -35,10 +38,44 @@ function useMembersList() {
       .finally(() => {
         setLoading(false)
       })
-  }, [])
+  }
+
+  const deleteMember = id => {
+    const toastID = toast('Cargando', {
+      position: 'bottom-right',
+      isLoading: true,
+    })
+    axios
+      .delete(`${API_URL}/members/${id}`, {
+        headers: {
+          authorization: `Bearer ${
+            getKeyFromStorage(STORAGE_KEYS.token) ?? ''
+          }`,
+        },
+      })
+      .then(({ data }) => {
+        toast(data?.body || 'Miembro Eliminado', {
+          type: 'success',
+          position: 'bottom-right',
+        })
+
+        fetchMembers()
+      })
+      .catch(err => {
+        const error401 = err?.response?.data?.body
+        const message = err?.message ?? 'Falied get data'
+        toast(error401 || message, {
+          type: 'error',
+          position: 'bottom-right',
+        })
+      })
+      .finally(() => toast.dismiss(toastID))
+  }
+
   return {
     members,
     loading,
+    deleteMember,
   }
 }
 

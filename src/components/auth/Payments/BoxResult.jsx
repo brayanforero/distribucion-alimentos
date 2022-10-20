@@ -14,7 +14,7 @@ function BoxResult({ items = [], onSelectItem }) {
           key={i.cedula}
           className="block w-full p-4 hover:bg-gray-100 cursor-pointer rounded-lg"
         >
-          {i.cedula} - {i.names} {i.lastname}
+          {i.cedula} - {i.names} {i.lastnames}
         </span>
       ))}
     </div>
