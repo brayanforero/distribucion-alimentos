@@ -1,5 +1,6 @@
 import { routes } from '@/utils'
 import { useCallback } from 'react'
+import { useLocation } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
 import Swal from 'sweetalert2'
@@ -8,6 +9,7 @@ const MySwal = withReactContent(Swal)
 
 const MembersTable = ({ data = [], isLoadData = true, onDeleteItem }) => {
   const navigate = useNavigate()
+  const { state: lastMemberUpdated } = useLocation()
   const handleDelete = useCallback(i => {
     MySwal.fire({
       icon: 'warning',
@@ -53,7 +55,12 @@ const MembersTable = ({ data = [], isLoadData = true, onDeleteItem }) => {
         </thead>
         <tbody>
           {data.map(i => (
-            <tr key={i.id} className="bg-white border-b  dark:border-gray-700">
+            <tr
+              key={i.id}
+              className={`bg-white border-b dark:border-gray-700${
+                parseInt(lastMemberUpdated) === i.id ? ' changed-status' : ''
+              }`}
+            >
               <th
                 scope="row"
                 className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap"

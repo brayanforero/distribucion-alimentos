@@ -79,3 +79,17 @@ body {
 body.swal2-height-auto {
   height: 100vh !important;
 }
+
+@keyframes changed {
+  from {
+    background-color: rgba(30 66 159 / 0.4);
+  }
+
+  to {
+    background-color: rgba(30 66 159 / 0);
+  }
+}
+
+.changed-status {
+  animation: changed 3s 0.3s;
+}

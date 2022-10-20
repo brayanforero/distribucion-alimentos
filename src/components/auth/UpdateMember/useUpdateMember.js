@@ -11,7 +11,10 @@ function useUpdateMember() {
   const navigate = useNavigate()
   const [loading, setLoading] = useState()
 
-  const goToMembers = debounce(() => navigate(routes.members.index), 1200)
+  const goToMembers = debounce(
+    id => navigate(routes.members.index, { state: id }),
+    1200
+  )
   const updateMember = member => {
     setLoading(true)
 
@@ -27,8 +30,8 @@ function useUpdateMember() {
         toast('Member added', {
           type: 'success',
           position: 'bottom-right',
-          closeOnClick: () => goToMembers(),
-          onClose: () => goToMembers(),
+          closeOnClick: () => goToMembers(member.id),
+          onClose: () => goToMembers(member.id),
         })
 
         //
