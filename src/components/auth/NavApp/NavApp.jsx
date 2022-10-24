@@ -45,15 +45,6 @@ function NavApp() {
               </div>
             </AppLink>
           </li>
-
-          <li className="w-[85%] mx-auto">
-            <AppLink to="settings">
-              <div className="flex items-center gap-4">
-                <i className="bx bx-cog"></i>
-                Configuración
-              </div>
-            </AppLink>
-          </li>
         </ul>
       </nav>
     </aside>
