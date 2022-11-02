@@ -1,4 +1,4 @@
-import { routes } from '@/utils'
+import { API_URL, routes } from '@/utils'
 import { useCallback } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
@@ -72,16 +72,26 @@ const MembersTable = ({ data = [], isLoadData = true, onDeleteItem }) => {
               <td className="py-4 px-6">{i.phone_number}</td>
               <td className="py-4 px-6">{i.members_of_family}</td>
               <td className="py-4 px-6">
+                {!i.is_worker && (
+                  <a
+                    href={`${API_URL}/document/${i.id}`}
+                    target="_blank"
+                    type="button"
+                    className="text-white bg-gradient-to-r from-blue-600 to-blue-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-xs py-1 px-2 text-center mr-2 mb-2"
+                  >
+                    Constancia
+                  </a>
+                )}
                 <button
                   type="button"
-                  className="text-white bg-gradient-to-r from-green-600 to-green-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm  p-2 text-center mr-2 mb-2"
+                  className="text-white bg-gradient-to-r from-green-600 to-green-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-blue-800 font-medium rounded-lg text-xs py-1 px-2 text-center mr-2 mb-2"
                   onClick={() => navigate(routes.members.update, { state: i })}
                 >
                   Actualizar
                 </button>
                 <button
                   type="button"
-                  className="text-white bg-gradient-to-r from-red-600 to-red-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm  p-2 text-center mr-2 mb-2"
+                  className="text-white bg-gradient-to-r from-red-600 to-red-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-blue-800 font-medium rounded-lg text-xs py-1 px-2 text-center mr-2 mb-2"
                   onClick={() => handleDelete(i)}
                 >
                   Eliminar
