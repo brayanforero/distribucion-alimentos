@@ -151,7 +151,7 @@ function FormUpdateMember({ member }) {
 
       <div className="col-span-2">
         <div className="mb-2 block">
-          <Label htmlFor="is_worker" value="¿Es trabajador?" />
+          <Label htmlFor="is_worker" value="¿Pertenece a este Clap?" />
         </div>
         <input
           defaultChecked={member.is_worker}
